@@ -1,1 +1,142 @@
 # sumus-19th-birthday
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Little Birthday Surprise for SUMU 🎀</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;display:grid;place-items:center;
+ background:linear-gradient(135deg,#ffe5ef,#f5e8ff,#fff3dc);
+ font-family:Arial,sans-serif;color:#70445c;text-align:center;
+ padding:20px;overflow-x:hidden
+}
+.card{
+ background:#ffffffdc;padding:30px 22px;border-radius:28px;
+ max-width:420px;width:100%;box-shadow:0 12px 40px #bc82a522;
+ animation:pop .7s ease
+}
+@keyframes pop{from{opacity:0;transform:translateY(15px)}
+to{opacity:1;transform:translateY(0)}}
+.cat{font-size:78px;animation:bounce 1.6s infinite}
+@keyframes bounce{50%{transform:translateY(-9px)}}
+h1{color:#d65c91;font-size:28px}
+p{line-height:1.7}
+button{
+ border:0;border-radius:30px;padding:13px 22px;margin:7px;
+ font-size:16px;cursor:pointer;background:#ed8bb3;color:white;
+ transition:transform .2s
+}
+button:hover{transform:scale(1.06)}
+.secondary{background:#e7d9ef;color:#70445c}
+.hidden{display:none}
+#message{font-weight:bold;color:#d65c91;margin-top:18px}
+.heart{position:fixed;top:-30px;animation:fall 6s linear infinite;
+ pointer-events:none;z-index:-1}
+@keyframes fall{to{transform:translateY(110vh) rotate(300deg)}}
+ 
+.crying-cat {
+  display: inline-block;
+  font-size: 75px;
+  animation: sob 0.25s infinite alternate;
+}
+@keyframes sob {
+  from { transform: rotate(-12deg) scale(1); }
+  to { transform: rotate(12deg) scale(1.12); }
+}
+.crying-text {
+  animation: shake 0.15s infinite alternate;
+}
+@keyframes shake {
+  from { transform: translateX(-3px); }
+  to { transform: translateX(3px); }
+}
+ 
+</style>
+</head>
+<body>
+<div class="card">
+  <section id="first">
+    <div class="cat">🐱🎀</div>
+    <h1>Hey, Birthday Star! 🎂</h1>
+    <p>A tiny surprise has been made just for you. 💗</p>
+    <button onclick="openWish()">Open your surprise ✨</button>
+  </section>
+
+  <section id="second" class="hidden">
+    <div class="cat">🐱💗</div>
+    <h1>Happy Birthday! 🎉</h1>
+    <p>
+  tumi janle ovak hobe je ami first time karo birthday te
+  etto kostow kore ekta wish banaitachii, so maybe it's a
+  little special,, 🐒
+  <br><br>
+  jaihok, bolte chaile toh onek kichui bola jay, onek kotha
+  bolar iccha ache but onno konodin...🙂
+  <br><br>
+  you know? you are such a wonderful singer 😭❤️ I can't
+  explain it in words,,, asolei tumar voice ta onk sundor
+  trust me or not 🤌😚
+  <br><br>
+  r sobcheye funny hochhe j majhe moddhe reels e random
+  kono meyer gaan dekhleo tomar kotha mone pore jay,,,
+  😭🥹 emonki tomar kotha vebei oder reels e like diye dei 💀🤦‍♂️
+  <br><br>
+  anyway, happy birthday once again. ❤️ always keep singing,
+  ar emnei shundor theko,,,sobsmy hashikhushi theko,,,
+  gaan geyo,,, maje moddhe mon cahile amareu dui ekta dio😭🙏
+  tomar jonno mon theke onek onek shubhokamona roilo 🫶🏻
+</p>
+   
+    <button onclick="openTreat()">One last question... 👀</button>
+  </section>
+
+  <section id="third" class="hidden">
+    <div class="cat">🐱🍰</div>
+    <h1>Treat for this kitty? 🥹</h1>
+    <p>Will you give me a birthday treat? 🎀</p>
+    <button onclick="answerYes()">YES! 💗</button>
+    <button class="secondary" onclick="answerNo()">No 🙈</button>
+    <div id="message"></div>
+  </section>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll("section").forEach(s=>{
+    s.classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
+}
+function openWish(){show("second")}
+function openTreat(){show("third")}
+ function answerYes(){
+  document.getElementById("message").innerHTML =
+    "😻💗 YAYYYY! TREAT CONFIRMED! 🍰🎉";
+}
+
+function answerNo(){
+  document.getElementById("message").innerHTML =
+    '<div class="crying-cat">😭💦</div>' +
+    '<div class="crying-text">' +
+    'MEOWWWWW 😭💔<br>' +
+    'TREAT O DIBA NA?! 🥹🙏<br>' +
+    'AMI KANBOOOO 😭🐾' +
+    '</div>';
+}
+
+for(let i=0;i<14;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.textContent=["💗","💕","✨","🌸"][i%4];
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDelay=Math.random()*6+"s";
+  h.style.animationDuration=(4+Math.random()*5)+"s";
+  document.body.appendChild(h);
+}
+</script>
+</body>
+</html>
